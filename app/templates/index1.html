@@ -1,0 +1,66 @@
+<!-- <!DOCTYPE html>
+<html lang="en">-->
+{% extends "index.html" %} 
+{% block content %}
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #121212;
+    }
+    h1 {
+      color: #feb8b8;
+    }
+    .emoji-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .emoji-button {
+      font-size: 2rem;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.3s;
+    }
+    .emoji-button:hover {
+      transform: scale(1.2);
+      background-color: #809bd1;
+    }
+    .emoji-button:focus {
+      outline: none;
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #666;
+    } 
+  </style>
+
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+  <h1>Emotion Movie Recommender</h1>
+  <p>Select an emoji that matches your mood, and we’ll recommend a movie!</p>
+  <div class="emoji-buttons">
+    <button class="emoji-button" type="submit" name="emotion" value="happy">😊</button>
+    <button class="emoji-button" name="emotion" value="sad">😢</button>
+    <button class="emoji-button" name="emotion" value="angry">😡</button>
+    <button class="emoji-button" name="emotion" value="romance">❤️</button>
+    <button class="emoji-button" name="emotion" value="neutral">😐</button>
+    <button class="emoji-button" name="emotion" value="disgust">😱</button>
+    <button class="emoji-button" name="emotion" value="surprised">🤩</button>
+    <button class="emoji-button" name="emotion" value="fear">😨</button>
+  </div>
+  <p id="recommendation"></p>
+  </form>
+  <footer>
+    <p> Emotion Based Movie Recommender</p>
+  </footer>
+ </body>
+ {% endblock %}
+<!--</html> -->

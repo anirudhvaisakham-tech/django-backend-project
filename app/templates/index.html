@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Theme Home Window</title>
+  <style>
+    /* Reset some default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body and background styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #121212;  /* Dark background for dark theme */
+      color: #e0e0e0;  /* Light text color for contrast */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100vh;
+      padding-top: 80px; /* Space for the taskbar */
+    }
+
+    /* Taskbar (Top Layer) */
+    .taskbar {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: #1c1c1c;  /* Dark background for taskbar */
+      color: #e0e0e0;  /* Light text for taskbar */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+      z-index: 10;
+    }
+
+    /* Logo */
+    .taskbar .logo {
+      font-size: 26px;
+      font-weight: 700;
+      font-family: 'Georgia', serif;
+      color: #4caf50;  /* Bright color for logo */
+    }
+
+    /* Navigation Links on the Taskbar */
+    .taskbar .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .taskbar .nav-links a {
+      text-decoration: none;
+      color: #e0e0e0;
+      font-size: 16px;
+      padding: 8px 18px;
+      border-radius: 25px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .taskbar .nav-links a:hover {
+      background-color: #4caf50;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* User Info and Dropdown Menu */
+    .taskbar .user-info {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Dropdown Menu */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown button {
+      padding: 8px 15px;
+      background-color: #333;  /* Dark button background */
+      color: #e0e0e0;
+      border-radius: 25px;
+      border: none;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown button:hover {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .dropdown .arrow {
+      margin-left: 8px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #333;  /* Dark dropdown background */
+      min-width: 150px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      z-index: 1;
+      border-radius: 8px;
+      top: 35px;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+      color: #e0e0e0;
+      font-size: 15px;
+      border-bottom: 1px solid #444;
+      transition: background-color 0.2s ease;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #4caf50;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Main Content Area */
+    .main-content {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      flex-grow: 1;
+      padding: 60px 30px;
+    }
+
+    /* Content Area (Dashboard) */
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* Card Layout for Content */
+    .card {
+      background-color: #333;  /* Dark card background */
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      padding: 25px;
+      margin-bottom: 25px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card h3 {
+      font-size: 28px;
+      color: #4caf50;  /* Bright color for headings */
+      margin-bottom: 18px;
+      font-family: 'Georgia', serif;
+    }
+
+    .card p {
+      font-size: 17px;
+      color: #e0e0e0;  /* Light text for paragraphs */
+      margin-bottom: 25px;
+    }
+
+    .action-btn {
+      padding: 14px 24px;
+      background-color: #4caf50;  /* Bright button color */
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .action-btn:hover {
+      background-color: #388e3c;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 12px 0;
+      margin-top: 60px;
+      font-size: 14px;
+      color: #888;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Taskbar (Top Layer) -->
+  <div class="taskbar">
+    <div class="logo">EbMR</div>
+    <!-- Navigation Links in the Taskbar -->
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Dashboard</a>
+      <a href="#">Profile</a>
+      <a href="#">Settings</a>
+    </div>
+    <!-- User Info and Dropdown Menu -->
+    <div class="user-info">
+      <div class="dropdown">
+        <button>
+          User <span class="arrow">&#x25BC;</span>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Profile</a>
+          <a href="#">Settings</a>
+          <a href="#" onclick="logout()">Log Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="content-area">
+  {% block content %}
+
+  <!-- Main Content Area -->
+  
+
+      <!-- Card 1 -->
+      <div class="card">
+        <h3>Welcome to Your Dashboard</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur auctor hendrerit lorem, non eleifend odio.</p>
+        <button class="action-btn">Get Started</button>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <h3>Your Recent Activity</h3>
+        <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod.</p>
+        <button class="action-btn">View Details</button>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <h3>Profile Settings</h3>
+        <p>Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis.</p>
+        <button class="action-btn">Update Profile</button>
+      </div>
+    
+  
+{% endblock %}
+</div>
+</div>
+  <!-- Footer -->
+  <footer>
+    © 2025 EbMR
+  </footer>
+
+  <script>
+    function logout() {
+      alert("You have been logged out!");
+      // Implement real logout behavior
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+asgiref==3.8.1
+certifi==2024.12.14
+charset-normalizer==3.4.1
+Django==5.1.4
+django-redis==5.4.0
+idna==3.10
+redis==5.2.1
+requests==2.32.3
+sqlparse==0.5.3
+tzdata==2024.2
+urllib3==2.3.0
+
+django
+requests
+django-redis  # If you use Redis caching
+django-environ  # If you're managing environment variables
+#BASE_URL = "https://api.themoviedb.org/3"
+#API_KEY = "624046bdd4dafac939c49fb3581a1c4d"

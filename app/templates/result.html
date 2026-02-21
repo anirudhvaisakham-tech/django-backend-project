@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+<body>
+    {% if movies %}
+    <h2>Recommended Movies for "{{ emotion|default:'No Emotion' }}" emotion:</h2>
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Rating</th>
+            <th>Release Date</th>
+        </tr>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.vote_average }}</td>
+            <td>{{ movie.release_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% elif message %}
+    <p>No movies found for the detected emotion.</p>
+    {% endif %}
+    <a href="/"><input type="submit" value="Home"></a>
+</body>
+</html>
